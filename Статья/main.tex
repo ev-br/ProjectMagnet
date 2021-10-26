@@ -26,12 +26,9 @@
 
 \title{Geometric Properties of Ising model on an Interacting Self-Avoiding Walks}
 
-\author{Ilya Pchelintsev}
-\author{Kamilla Faizullina}
-\author{Evgeni Burovski}
-
-
-\address{National Research University Higher School of Economics, 101000 Moscow, Russia}
+\author{Ilya Pchelintsev, Kamilla Faizullina, Evgeni Burovski}
+%
+\address{HSE University, 101000 Moscow, Russia}
 
 
 % абстракт и введение я напишу немного позже, когда будет более полное
@@ -52,7 +49,7 @@ In previous studies, it was established that Ising model on the self-avoiding wa
 \section{Models and Methods}
 In the paper we consider several models: the first one is Ising model on interacting self-avoiding walk from Ref. \cite{faizullina2021critical}, on three different lattices: 2D-square lattice, 3D-square lattice and 2D-triangle lattice. The main difference between square and triangle lattice in defining two additional diagonal monomers on lattice as nearest too. Considering the case of lack of outer magnetic field in this work, the Hamiltonian of the model of fixed conformation $u$ with length $N$ and strength of nearest-neighbors interaction $J$ reads:
 
-\begin{equation}\label{H_Ising_ISAW}
+\begin{equation}\label{eq:H_Ising_ISAW}
   H_{u, N, \{\sigma\}} = - \sum_{\langle i,j \rangle} J  \sigma_{i}  \sigma_{j},\ \ i,j \in u,\ |u| = N
 \end{equation}
 
@@ -127,8 +124,13 @@ We are interested in comparing models in their respective critical regions. For 
 % Стоит ли добавлять рисунок шага алгоритма 
 % и более подробное объяснение методов?? Поскольку ничего не было добавлено, % я решил не расписывать, но описание методов получилось крайне немногословным))
 
-\section{Results}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Mean Asphericity and Critical Cumulant}
 
 % если я правильно понимаю, данную подсекцию можно полностью взять из отчёта
@@ -209,6 +211,91 @@ We took mean values of asphericity of Ising-ISAW model in the borders of critica
 
 As a result, comparison with critical cumulant of Ising-ISAW model, which value was found during simulations in Ref.\cite{faizullina2021critical} ($U_{4} = 0.308(8)$) showed significant mismatch of values, which means that we had not took into account some other geometrical properties - for example, which will be considered in the next part - proportions of monomers with different quantities of nearest neighbors. It is obvious that in Ising model on the rectangular lattice most of monomers located inside the lattice and have 4 nearest neighbors, while monomers spread around the perimeter of the lattice have at least 2 (corners) and 3 nearest neighbors. Proportions in Ising-ISAW conformations are completely different (see \cref{fig:Ising_vs_ISAW2D}).
 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bulk-to-surface ratios}
+
+Typical ISAW conformations (see Fig.\ \ref{fig:blob-and-link}.) in the
+$\theta$-critical region can be thought of having a blob-and-link
+structure. Above the $\theta$ temperature, blobs have a
+finite size and are separated; at the transition, all blobs merge.
+In the collapsed phase, the free energy energy acquires a surface term \cite{Owczarek1993}.
+While the notion of a surface is only well-defined in the collapsed phase, surface-like
+corrections are large around the $\theta$ point for a 2D ISAW model \cite{Grassberger1995}.
+In order to quantify surface-like effects across the transition, we follow
+Ref.\ \cite{faizullina2021critical} and consider local connectivity of internal
+monomers in a conformation. Specifically, for each monomer in a conformation
+we count the number of monomers on its nearest neighbor sites and classify
+each monomer as ``1D-like'' (two neighbors), ``2D-like'' (four neighbors) or
+``surface-like'' (three neighbors). 
+
+Denoting by $n_\alpha$ the fraction of monomers with $\alpha$ neighbors, 
+for a length-$N$ conformation on a lattice with the coordination number $z$
+we find
+%
+$$
+\sum_{\alpha=2}^z n_\alpha = 1 - 2/N \;,
+\label{eq:sum_n}
+$$
+%
+where the second term accounts for the two end monomers, $n_1 =2$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{2D square lattice, $z=4$}
+
+Since Eq.\ \eqref{eq:sum_n} holds for any conformation of $N$ monomers, we
+compute the average values of $n_\alpha$ under the Gibbs distribution \eqref{eq:Z}.
+We start with the limit of $J=0$, which is nothing but a usual non-interacting SAW model.
+(The Gibbs distribution \eqref{eq:H_Ising_ISAW}-\eqref{eq:Z}
+becomes uniform for $J=0$).
+
+Fig.\ \ref{fig:finite_size_SAW} shows the mean values of $n_\alpha$ with $\alpha=2, 3, 4$
+for a SAWs of varying lengths on a 2D square lattice (with $z=4$).
+For short lengths, $N \leqslant 11$, we enumerate all SAW conformations and
+average the values of $n_\alpha$; for larger values of $N$ we use Monte Carlo simulations.
+%
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.99\textwidth]{Images/ISAWJ0_Bulk2-4.png}
+    \caption{Fractions of monomers, $n_\alpha$, of the SAW
+model (Eqs.\ \eqref{eq:H_Ising_ISAW}-\eqref{eq:Z} with $J=0$) on a square lattice as a function
+of $1/N$. Black dots are results of exact enumeration for $N = 5$ to $N=11$; 
+open squares are results MC simulations. See text for discussion.}
+    \label{fig:finite_size_SAW}
+\end{figure}
+%
+
+Fig. \ref{fig:finite_size_SAW} shows that $n_\alpha$ ($\alpha=2, 3, 4$) saturate
+at large $N$ with some finite-size corrections. The most noteworthy feature of
+Fig.\ \ref{fig:finite_size_SAW} is that the ``surface'' fraction
+%
+$$
+n_3 \to 0.25 \qquad\text{as\quad}N\to\infty \;,
+$$
+%
+so that asymptotically $N/4$ monomers of a length-$N$ SAW conformation are ``surface-like'' and
+$3 N/4$ monomers are ``1D-like''.
+
+
+Fig.\ \ref{fig:Ising_vs_ISAW2D} shows results of MC simulations for
+$n_\alpha$ as functions of the coupling constant $J$ across the collapse transition
+for both ISAW model and Ising-ISAW model \eqref{H_Ising_ISAW}.
+We see that for the lengths $N > 1000$, finite-size corrections are barely visible.
+For the ISAW model,  the fraction of the ``2D-like'' monomers, $n_4$, is
+essentially zero for small $J$ and quickly increases on approach to the $\theta$-point.
+For the Ising-ISAW model, the behavior is qualitatively similar, if somewhat
+more smooth for $J < J_\theta$. The ``1D-like'' fraction, $n_2$ is also a smooth
+monotonic function across the whole range of $J$. 
+
+On the contrary, the ``surface-like'' fraction, $n_3$,---for both models---develops
+a peak in the vicinity of the respective collapse transitions. The available MC
+data suggest that the peak becomes more narrow as $N$ increases, and that the
+position of the peak is shifted away from the $\theta$-point.
+
+
 \begin{figure*}
     \centering
     \includegraphics[width=0.99\textwidth]{Images/bulk2-4_inset.png}
@@ -216,7 +303,61 @@ As a result, comparison with critical cumulant of Ising-ISAW model, which value 
     \label{fig:Ising_vs_ISAW2D}
 \end{figure*}
 
-\subsection{Bulk}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{3D cubic lattice($z=6$) }
+
+On a 3D cubic lattice with the coordination number $z=6$, the classification of a
+local neighborhoods is more complicated than that on a 2D square lattice.
+``1D-like'' monomers still have two neighbors, deep bulk corresponds to six
+neighbors. Considering a cube-shaped globule, three neighbors define ``corners'',
+and faces of a cube have five neighbors.
+Since typical conformations are not perfect cubes, it is reasonable to expect
+that $n_6$ corresponds to the ``bulk-like'' monomers and
+$n_3$, $n_4$ and (to some extent) $n_5$ correspond to ``surface-like'' monomers.
+
+Fig. \ref{fig:Ising_vs_ISAW} shows our MC results for the 3D cubic lattice in the
+left column. Here we simulate conformations of up to $N=600$ for both models,
+Ising-ISAW \ref{H_Ising_ISAW} and ISAW \ref{XXX}.
+
+For the Ising-ISAW model, Fig.\ \ref{fig:Ising_vs_ISAW} shows that the
+``1D-like'' and ``bulk-like'' fractions, $n_1$ and $n_6$, respectively,
+are monotonic and develop a jump at the critical coupling at increasing $N$, which is
+consistent with the first-order character of the transition \cite{Garel1999, Foster2021}.
+
+The ``surface-like'' fractions $n_3$ and $n_4$ clearly develop a peak in the
+critical region, which becomes progressively more narrow and better defined 
+at increasing $N$, Finite-size corrections are strong for the available values of $N$. 
+
+Our MC data for $n_5$ can be interpeted as
+finite-$N$ corrections to either a jump or a peak. Simulations for 
+larger lengths $N$ are needed to conclusively resolve the behavior of $n_5$
+in the critical region. 
+
+For the ISAW model the begavior is qualitatively similar: the ``bulk-like''
+fraction, $n_6$, is essentially zero all the way up to the theta-transition $J_\theta =...$\textbf{XXX}
+and is monotonically increasing for $J > J_\theta$, the ``1D-like'' fraction $n_2$
+decreases monotonically with $J$---for the available lengths $N$, the behavior
+is almost featureless. The ``surface-like'' fractions $n_3$ and $n_4$ develop
+a peak which shifts towards $J_\theta$ as $N$ increases, and $n_5$ is very
+slowly developing what is probably a peak. 
+The overall dependence if $n_\alpha$ on $J$ for the available lengths
+$N \leqslant 600$ is much slower for the ISAW model than for the Ising-ISAW
+model, which is consistent with a continuous collapse transition with tricritical
+exponents \cite{Vanderzande}.
+
+Comparing the behavior of the ISAW and Ising-ISAW models on the 3D cubic lattice,
+we conclude that the dependence of the ``surface-like'' fraction is sensitive
+to the nature of the collapse transition: for the ISAW model, where the transition
+is continuous, the finite-size corrections are much stronger than those for the
+Ising-ISAW model, where the transition is first-order. \textbf{XXX: into the sconclusion}
+
+------------------------
+
+
+
+
 
 In this section we studied proportions of monomers with fixed numbers of nearest neighbors for Ising-ISAW and ISAW models on 3D-square and 2D-triangular lattices. Monomers of all four modified models can have from 2 to 6 close-range energy connections and some types of monomers, according to number of connections they have, can be interpreted similarly: for example, it is obvious that parts of conformations with monomers with only two nearest neighbors represent 1D-conformations or chains whatever lattice was used in observed model. And the opposite - regions where monomers have maximum number of close-range connections represent densely packed areas deep inside the globule. Talking about cubic lattice, other types of monomers can be also interpreted: monomers with only three neighbors define "corners" on conformation, while only monomers on a cube edge (or it also can be on a isolated plane from other part of globule) can have four neighbors. Presence on five neighbors belongs to the monomers on a surface of conformation. Unfortunately, we cannot make similar interpretations for conformations on a triangular lattices.
 
