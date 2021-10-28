@@ -229,7 +229,17 @@ Ref.\ \cite{faizullina2021critical} and consider local connectivity of internal
 monomers in a conformation. Specifically, for each monomer in a conformation
 we count the number of monomers on its nearest neighbor sites and classify
 each monomer as ``1D-like'' (two neighbors), ``2D-like'' (four neighbors) or
-``surface-like'' (three neighbors). 
+``surface-like'' (three neighbors), see Fig.\ \ref{fig:2-3-4} for an illustration. 
+
+\begin{figure}[!h]
+\includegraphics[width=3cm, keepaspectratio=True]{Images/count.png}
+\caption{A conformation with $N=26$ monomers. Here $n_2=10$, $n_3=$\textbf{XXX}
+and $n_3=$\textbf{YYY}. Monomers are marked according to the numnber of nearest neighbors: 
+black circles are two neighbors, blue triangles are three neighbors and red squares
+are four neighbors.}
+\label{fig:2-3-4}
+\end{figure}
+
 
 Denoting by $n_\alpha$ the fraction of monomers with $\alpha$ neighbors, 
 for a length-$N$ conformation on a lattice with the coordination number $z$
@@ -353,6 +363,48 @@ to the nature of the collapse transition: for the ISAW model, where the transiti
 is continuous, the finite-size corrections are much stronger than those for the
 Ising-ISAW model, where the transition is first-order. \textbf{XXX: into the sconclusion}
 
+\textbf{TODO: 0.25, hypercubic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{2D triangular lattice($z=6$) }
+
+In this section, we consider the ISAW and Ising-ISAW models on the 2D triangular
+lattice, which has a coordination number $z=6$. Despite having the same coordination
+number as a 3D cubic lattice, the triangular lattice structure is rather
+different for the SAW-like conformations because a one-dimensional line forms
+and impenetrable boundary on a triangular lattice but not on a cubic lattice. 
+Monomers with one and six neighbors still can be interpreted as ``1D-like'' and
+``bulk-like'', respectively, but the straight boundary corresponds to four neighbors.
+This way, the interpretation of the fraction $n_3$ is not entirely clear-cut: it is
+neither ``1D-like'', nor does it correspond to a right boundary.
+We can thus expect that the ``surface-like'' behavior is displayed by the fractions
+$n_4$ and $n_5$.
+
+Fig.\ \ref{fig:Ising_vs_ISAW} shows results of MC simulations in the right-hand
+column. For the ISAW model (open symbols) the fractions $n_2$ and $n_3$ are
+monotonically decreasing functions of $J$. The ``surface-like'' fractions, $n_4$ and $n_5$
+develop broad peaks which get progressively sharper with increasing $N$. The peak
+locations are not far from the extimate of the collapse transition
+$J_{t} = 0.405 \pm 0.07 of Ref.\ $\cite{Privman1986}. The bulk fraction $n_6$
+is a featureless monotonically increasing function of $J$ for the available lengths
+$N \leqslant 600$. 
+
+For the Ising-ISAW model the behavior is qualitatively similar, with the location
+of the peaks of $n_4$ and $n_5$ suggesting that the collapse transition occurs
+around $J_t \approx 0.6$. We are not aware of an independent estimate of the
+location of the collapse transition for the Ising-ISAW model on a trinagular lattice.
+
+Comparing the Ising-ISAW and ISAW models, we see that in the latter model,
+the finite-size dependence is smoother than in the former, suggesting that the
+crossover exponent, which governs the size of the critical region, 
+is larger for the ISAW model.
+
+
+Finally, we consider the $J=0$ limit.
+\textbf{1. No 1/4 --- specific for hypercubic lattices?
+2. Note that n=2 and n=3 are both equal 0.36, are they?
+}
+
 ------------------------
 
 
@@ -380,6 +432,7 @@ We also repeated MC simulations for two-dimensional triangular lattice. Unlike t
 
 % здесь был TrIsing_complex
 
+\textbf{TODO: include}
 Critical region of the model on a triangular lattice was not enumerated yet. But as it was suggested, density of conformations becomes higher as nearest-neighbors interaction $J$ strengthen. Moreover, proportion of monomers with six neighbors on a triangular lattice is far higher than on a cubic one. It is also significant that "triangular" conformations with no inner interaction have almost twice shorter one-dimensional chains than conformations on a cubic lattice in the same conditions.
 
 \subsubsection{ISAW model}
