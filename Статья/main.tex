@@ -47,13 +47,22 @@ The impact of close-range interaction was studied precisely in models of magneti
 In previous studies, it was established that Ising model on the self-avoiding walk conformations (SAWs) has a continious type of phase transition \cite{faizullina2021critical}. In this work, we continue study geometric properties of this model and compare them with "papent" models and its modifications, such as Ising model on the rectangular lattice, considered in Ref.\cite{Selke2006}, and two-dimensional interacting self-avoiding walks exactly in their respective critical regions. We suggest that models with similar geometric properties will also have same magnetic propertries, what we suggest to observe in comparing values of Binder cumulants in the $\theta$-transition of models with the equal values of asphericities.
 
 \section{Models and Methods}
-In the paper we consider several models: the first one is Ising model on interacting self-avoiding walk from Ref. \cite{faizullina2021critical}, on three different lattices: 2D-square lattice, 3D-square lattice and 2D-triangle lattice. The main difference between square and triangle lattice in defining two additional diagonal monomers on lattice as nearest too. Considering the case of lack of outer magnetic field in this work, the Hamiltonian of the model of fixed conformation $u$ with length $N$ and strength of nearest-neighbors interaction $J$ reads:
+In the paper we consider several models: the first one is Ising model on interacting self-avoiding walk from Ref. \cite{faizullina2021critical}, on three different lattices: 2D-square lattice, 3D-square lattice and 2D-triangular lattice. The main difference between square and triangular lattice in defining two additional diagonal monomers on lattice as nearest too. Considering the case of lack of outer magnetic field in this work, the Hamiltonian of the model of fixed conformation $u$ with length $N$ and strength of nearest-neighbors interaction $J$ reads:
 
 \begin{equation}\label{eq:H_Ising_ISAW}
   H_{u, N, \{\sigma\}} = - \sum_{\langle i,j \rangle} J  \sigma_{i}  \sigma_{j},\ \ i,j \in u,\ |u| = N
 \end{equation}
 
 The summation runs through spins involved in conformation and only with the nearest neighbors. 
+
+The equlibrium partition function corresponding to Eq.\ \eqref{eq:H_Ising_ISAW} reads
+%
+\begin{equation}
+Z =\sum_{u \in \mathcal{U}_N} \sum_{\{\sigma\}} e ^{-\beta H_{u, N, \{\sigma\}} },
+\label{eq:Z}
+\end{equation}
+%
+where $\beta$ is the inverse temperature.
 
 The second model considered in this paper is the Ising model on the rectangular lattice from the Ref.\cite{Selke2006}. Simulated lattices has $L \times rL$ spins and the Hamiltonian is calculated through interaction between all spins and their nearest neighbors respectively:
 
@@ -113,7 +122,7 @@ We are interested in comparing models in their respective critical regions. For 
         lattice & $T_{c}$ \\ \hline
         Square & $0.6673(5)$ \cite{Caracciolo2011} \\ \hline
         Cubic & $0.2779 \pm 0.0041$\cite{Tesi1996} \\ \hline
-        Triangle & $ 0.405 \pm 0.07$\cite{Privman1986} \\ \hline
+        Triangular & $ 0.405 \pm 0.07$\cite{Privman1986} \\ \hline
     \end{tabular}
     \caption{Known values of critical temperature of different modifications of ISAW model}
     \label{tab:ISAW_T_c}
@@ -246,11 +255,11 @@ for a length-$N$ conformation on a lattice with the coordination number $z$
 we find
 %
 $$
-\sum_{\alpha=2}^z n_\alpha = 1 - 2/N \;,
+\sum_{\alpha=2}^z n_\alpha = 1 - n_1 \;,
 \label{eq:sum_n}
 $$
 %
-where the second term accounts for the two end monomers, $n_1 =2$.
+where the second term accounts for the two end monomers: $n_1 \leqslant 2/N$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -415,12 +424,6 @@ In this section we studied proportions of monomers with fixed numbers of nearest
 
 To begin with, we performed simulations of ISAW model on square lattice on lengths from 5 to 3600 at $J=0$ with collecting statistics for fraction of monomers with 2 to 4 neighbors. To understand we mechanics of calculating neighbors of monomers, we also manually enumerated fractions of monomers with these number of neighbors for short conformations (5 to 11). Our results matched.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.99\textwidth]{Images/ISAWJ0_Bulk2-4.png}
-    \caption{Fractions of monomers of ISAW model on a square lattice with 2-4 nearest neighbors at $J=0$ as function of $1/N$, from $N = 5$ to $3600$ for MC simulations (empty squares) and from $N = 5$ to $11$ for enumerations (black dots)}
-    \label{fig:Ising_vs_ISAW}
-\end{figure}
 
 \subsubsection{Ising model on a SAW-conformation}
 
@@ -437,12 +440,12 @@ Critical region of the model on a triangular lattice was not enumerated yet. But
 
 \subsubsection{ISAW model}
 
-To understand how the presence of magnetic properties affects on density of models, we also performed Monte-Carlo simulations on a parental model of self-avoiding walks on the same lattices. Results was similar to Ising-ISAW model, as suggested from "parent" model. For cubic lattice $T_{c} = 0.2779\pm 0.0041 $\cite{Tesi1996}. For triangle lattice $J_{c} = 0.405 \pm 0.07 $\cite{Privman1986}. \Cref{fig:Ising_vs_ISAW} shows that geometric aspects of phase transition in ISAW model manifect earlier than in Ising-ISAW ones.  
+To understand how the presence of magnetic properties affects on density of models, we also performed Monte-Carlo simulations on a parental model of self-avoiding walks on the same lattices. Results was similar to Ising-ISAW model, as suggested from "parent" model. For cubic lattice $T_{c} = 0.2779\pm 0.0041 $\cite{Tesi1996}. For the trianglular lattice, $J_{c} = 0.405 \pm 0.07 $\cite{Privman1986}. \Cref{fig:Ising_vs_ISAW} shows that geometric aspects of phase transition in ISAW model manifect earlier than in Ising-ISAW ones.  
 
 \begin{figure}
     \centering
     \includegraphics[width=0.95\textwidth, height=22.5cm]{Images/Ising_vs_ISAW.png}
-    \caption{Fractions of monomers of Ising-ISAW model (stars) and ISAW model (open squares) on a cubic lattice (left column) and 2D-triangle lattice (right column) with 2-6 nearest neighbors as function of $J$ with length of conformations $N = $ 100 (green), 300 (blue) and 600 (red). Vertical lines define points of $\theta$-transition (For cubic lattice: black line for ISAW model \cite{Tesi1996} and blue line for Ising-ISAW model \cite{Foster2021}; for triangle lattice: blue line for ISAW model \cite{Privman1986})}
+    \caption{Fractions of monomers of Ising-ISAW model (stars) and ISAW model (open squares) on a cubic lattice (left column) and 2D-triangular lattice (right column) with 2-6 nearest neighbors as function of $J$ with length of conformations $N = $ 100 (green), 300 (blue) and 600 (red). Vertical lines define points of $\theta$-transition (For cubic lattice: black line for ISAW model \cite{Tesi1996} and blue line for Ising-ISAW model \cite{Foster2021}; for triangular lattice: blue line for ISAW model \cite{Privman1986})}
     \label{fig:Ising_vs_ISAW}
 \end{figure}
 
